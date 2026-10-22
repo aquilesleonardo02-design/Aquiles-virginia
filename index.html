@@ -307,11 +307,10 @@ Aquiles ♡</div>
   inset:0;
   z-index:9999;
   background:rgba(20,10,25,0.88);
-  display:none;
   align-items:center;
   justify-content:center;
   padding:18px;
-  animation: aparecer 0.35s ease;
+  box-sizing:border-box;
 ">
   <div style="
     position:relative;
@@ -320,6 +319,7 @@ Aquiles ♡</div>
     max-height:90vh;
     overflow:auto;
     text-align:center;
+    animation: aparecer 0.4s ease;
   ">
     <button id="closeSurprise" aria-label="Cerrar" style="
       position:sticky;
@@ -332,16 +332,46 @@ Aquiles ♡</div>
       cursor:pointer;
     ">✕</button>
 
-    <p style="color:white;font-weight:bold;font-size:1.2rem;">
+    <p style="color:white;font-weight:bold;font-size:1.2rem;clear:both;">
       Para la sosera muy grosera 💌
     </p>
 
     <img
-
-     src="./Brown Beige Vintage Paper Cutout Thank You Letter A4_20261022_155502_0000.png
+      src="./Brown%20Beige%20Vintage%20Paper%20Cutout%20Thank%20You%20Letter%20A4_20261022_155502_0000.png"
       alt="Para la sosera muy grosera"
-      style="width:100%;height:auto;border-radius:10px;"
+      style="display:block;width:100%;height:auto;border-radius:10px;"
     />
+  </div>
+</div>
+
+<style>
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>
+
+<script>
+const finalBtn = document.getElementById("finalBtn");
+const finalMessage = document.getElementById("finalMessage");
+const closeSurprise = document.getElementById("closeSurprise");
+
+finalBtn.addEventListener("click", function () {
+  finalMessage.classList.remove("hidden");
+  finalMessage.style.display = "flex";
+});
+
+closeSurprise.addEventListener("click", function () {
+  finalMessage.style.display = "none";
+  finalMessage.classList.add("hidden");
+});
+</script>
   </div>
 </div>
 
