@@ -299,9 +299,30 @@ Aquiles ♡</div>
       <h2>Un último mensajito…</h2>
       <p>Gracias por existir, por ser vos y por compartir un pedacito de tu vida conmigo.</p>
       <p class="hand">Hoy, mañana y siempre… te elijo. ♡</p>
-      <button class="btn" id="finalBtn">Abrir mi sorpresa 🎁</button>
-      <p id="finalMessage" class="hidden hand" style="font-size:1.3rem">Virginia, sos una parte muy bonita de mi historia. Te quiero. — Aquiles ♡</p>
-    </section>
+      
+<button class="btn" id="finalBtn">Abrir mi sorpresa 🎁</button>
+
+<div id="finalMessage" class="hidden" style="margin-top:20px; text-align:center;">
+  <p class="hand" style="font-size:1.3rem">
+    Virginia, sos una parte muy bonita de mi historia. Te quiero. — Aquiles ♡
+  </p>
+
+  <img
+    src="carta.png"
+    alt="Mi carta de agradecimiento para Virginia"
+    style="width:100%; max-width:600px; height:auto; border-radius:12px; margin-top:15px;"
+  />
+</div>
+
+<script>
+document.getElementById("finalBtn").addEventListener("click", function () {
+  document.getElementById("finalMessage").classList.remove("hidden");
+  this.textContent = "Sorpresa abierta 💌";
+  this.disabled = true;
+});
+</script>
+      
+      
     <footer class="footer">Hecho con cariño por Aquiles, para Virginia ♡</footer>
   </main>
 </div>
