@@ -302,26 +302,73 @@ Aquiles ♡</div>
       
 <button class="btn" id="finalBtn">Abrir mi sorpresa 🎁</button>
 
-<div id="finalMessage" class="hidden" style="margin-top:20px; text-align:center;">
-  <p class="hand" style="font-size:1.3rem">
-    Virginia, sos una parte muy bonita de mi historia. Te quiero. — Aquiles ♡
-  </p>
+<div id="finalMessage" class="hidden" style="
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(20,10,25,0.88);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  animation: aparecer 0.35s ease;
+">
+  <div style="
+    position:relative;
+    width:100%;
+    max-width:600px;
+    max-height:90vh;
+    overflow:auto;
+    text-align:center;
+  ">
+    <button id="closeSurprise" aria-label="Cerrar" style="
+      position:sticky;
+      top:0;
+      float:right;
+      border:0;
+      border-radius:50%;
+      padding:10px 14px;
+      font-size:20px;
+      cursor:pointer;
+    ">✕</button>
 
-  <img
-    src="carta.png"
-    alt="Mi carta de agradecimiento para Virginia"
-    style="width:100%; max-width:600px; height:auto; border-radius:12px; margin-top:15px;"
-  />
+    <p style="color:white;font-weight:bold;font-size:1.2rem;">
+      Para la sosera muy grosera 💌
+    </p>
+
+    <img
+      src="./carta.png"
+      alt="Para la sosera muy grosera"
+      style="width:100%;height:auto;border-radius:10px;"
+    />
+  </div>
 </div>
 
+<style>
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+
 <script>
-document.getElementById("finalBtn").addEventListener("click", function () {
-  document.getElementById("finalMessage").classList.remove("hidden");
-  this.textContent = "Sorpresa abierta 💌";
-  this.disabled = true;
+const finalBtn = document.getElementById("finalBtn");
+const finalMessage = document.getElementById("finalMessage");
+const closeSurprise = document.getElementById("closeSurprise");
+
+finalBtn.addEventListener("click", function () {
+  finalMessage.classList.remove("hidden");
+  finalMessage.style.display = "flex";
+});
+
+closeSurprise.addEventListener("click", function () {
+  finalMessage.style.display = "none";
+  finalMessage.classList.add("hidden");
 });
 </script>
       
+      
+
       
     <footer class="footer">Hecho con cariño por Aquiles, para Virginia ♡</footer>
   </main>
