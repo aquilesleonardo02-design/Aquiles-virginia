@@ -93,7 +93,7 @@ main#site{animation:appear .8s ease}@keyframes appear{from{opacity:0;transform:t
 <figure class="polaroid"><img id="photo4" src="./IMG-20261022-WA0005.jpg" alt="Cuarto recuerdo"><figcaption>Un día para guardar</figcaption><input class="upload" type="file" accept="image/*" data-target="photo4" aria-label="Elegir foto cuatro"></figure>
 
       </div>
-      <p class="note">Para que las fotos se vean también desde el enlace publicado, agregá los archivos de imagen al sitio y cambiá las imágenes de ejemplo en el HTML. El selector de arriba solo hace una vista previa en tu dispositivo.</p>
+      
     </section>
 
     <section class="section paper" id="carta">
@@ -134,18 +134,165 @@ Aquiles ♡</div>
 
     
     </section>
+    
+<section class="section paper" id="quiz">
+  <h2>¿Cuánto nos conocemos? 💞</h2>
 
-    <section class="section paper" id="quiz">
-      <h2>¿Cuánto nos conocemos? 💞</h2>
-      <div class="quizbox">
-        <div class="kicker" id="quizProgress">Pregunta 1 de 3</div>
-        <h3 id="question">¿Qué plan disfrutaríamos juntos?</h3>
-        <div class="answers" id="answers"></div>
-        <p id="quizResult" class="hand hidden"></p>
-        <div class="actions"><button class="btn alt hidden" id="restartQuiz">Jugar otra vez ↻</button></div>
-        <p class="note">Podés cambiar las preguntas y opciones editando la lista “questions” dentro de index.html.</p>
-      </div>
-    </section>
+  <div class="quizbox">
+    <div class="kicker" id="quizProgress">Pregunta 1 de 6</div>
+    <h3 id="question">¿Cuál es mi comida favorita?</h3>
+    <div class="answers" id="answers"></div>
+    <p id="quizResult" class="hand hidden"></p>
+
+    <div class="actions">
+      <button class="btn alt hidden" id="nextQuiz">Siguiente pregunta 💜</button>
+      <button class="btn alt hidden" id="restartQuiz">Jugar otra vez ↻</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const questions = [
+    {
+      question: "¿Cuál es mi comida favorita?",
+      options: ["Pizza", "Milanesa con puré", "Hamburguesa"],
+      correct: "Milanesa con puré",
+      hers: "Canelones"
+    },
+    {
+      question: "¿Cuál es mi animal favorito?",
+      options: ["Unicornio", "Perro", "Gato"],
+      correct: "Unicornio",
+      hers: "Nutria, lobo y mariposa"
+    },
+    {
+      question: "¿Cuál es mi color favorito?",
+      options: ["Azul", "Morado", "Negro"],
+      correct: "Morado",
+      hers: "Morado"
+    },
+    {
+      question: "¿Cuál es mi número favorito?",
+      options: ["3", "7", "10"],
+      correct: "7",
+      hers: "7"
+    },
+    {
+      question: "¿Qué animal tendría yo en nuestra casa?",
+      options: ["Un mapache", "Un gato gordo", "Un conejo"],
+      correct: "Un mapache",
+      hers: "Un gato gordo"
+    },
+    {
+      question: "¿Qué cuenta de YouTube miro siempre?",
+      options: ["Vegetta777", "Robleis", "El Rubius"],
+      correct: "Vegetta777",
+      hers: "Los Polinesios"
+    }
+  ];
+
+  const progress = document.getElementById("quizProgress");
+  const question = document.getElementById("question");
+  const answers = document.getElementById("answers");
+  const result = document.getElementById("quizResult");
+  const next = document.getElementById("nextQuiz");
+  const restart = document.getElementById("restartQuiz");
+
+  if (!progress || !question || !answers || !result || !next || !restart) {
+    return;
+  }
+
+  let current = 0;
+  let score = 0;
+  let answered = false;
+
+  function showQuestion() {
+    answered = false;
+    const q = questions[current];
+
+    progress.textContent = `Pregunta ${current + 1} de ${questions.length}`;
+    question.textContent = q.question;
+    answers.innerHTML = "";
+    result.textContent = "";
+    result.classList.add("hidden");
+    next.classList.add("hidden");
+    restart.classList.add("hidden");
+
+    q.options.forEach(option => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn";
+      button.textContent = option;
+      button.style.margin = "5px";
+      button.addEventListener("click", () => checkAnswer(option));
+      answers.appendChild(button);
+    });
+  }
+
+  function checkAnswer(selected) {
+    if (answered) return;
+    answered = true;
+
+    const q = questions[current];
+    const correct = selected === q.correct;
+
+    if (correct) score++;
+
+    answers.querySelectorAll("button").forEach(button => {
+      button.disabled = true;
+      if (button.textContent === q.correct) {
+        button.style.border = "2px solid #65b887";
+      } else if (button.textContent === selected && !correct) {
+        button.style.border = "2px solid #e58b9a";
+      }
+    });
+
+    result.innerHTML = "";
+    const lines = [
+      correct ? "¡Muy bien! 💖" : "¡Casi! 💗",
+      "La respuesta correcta sobre mí: " + q.correct,
+      "Mi respuesta sobre ella: " + q.hers
+    ];
+
+    lines.forEach(line => {
+      const p = document.createElement("p");
+      p.textContent = line;
+      result.appendChild(p);
+    });
+
+    result.classList.remove("hidden");
+
+    if (current < questions.length - 1) {
+      next.textContent = "Siguiente pregunta 💜";
+      next.classList.remove("hidden");
+    } else {
+      const final = document.createElement("p");
+      final.textContent = `Resultado: ${score} de ${questions.length} respuestas correctas 💞`;
+      result.appendChild(final);
+      restart.classList.remove("hidden");
+    }
+  }
+
+  next.addEventListener("click", () => {
+    if (current < questions.length - 1) {
+      current++;
+      showQuestion();
+    }
+  });
+
+  restart.addEventListener("click", () => {
+    current = 0;
+    score = 0;
+    showQuestion();
+  });
+
+  showQuestion();
+})();
+</script>
+    
+
+    
 
     <section class="section final" id="final">
       <div class="star">✦ ☾ ✦</div>
