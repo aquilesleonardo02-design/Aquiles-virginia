@@ -112,29 +112,23 @@ Aquiles ♡</div>
       <div id="letterEditor" class="hidden"><textarea id="letterInput" rows="9"></textarea><div class="actions"><button class="btn" id="saveLetter">Actualizar carta</button></div><p class="note">La edición es temporal. Para que quede fija en el enlace, editá el texto de la carta en index.html antes de publicarlo.</p></div>
       <p id="letterMsg" class="center hand hidden">La carta queda guardada en este momento bonito. ♡</p>
     </section>
-    
-<section class="section paper" id="musica">
+    <section class="section paper" id="musica">
   <h2>Nuestra canción 🎶</h2>
+
   <div class="music">
     <div style="font-size:3rem">🎼</div>
     <h3>Una canción que nos recuerde</h3>
     <p class="note">Nuestra canción especial ❤️</p>
 
-    <input id="musicUrl" type="url" placeholder="https://.../cancion.mp3" aria-label="Enlace directo a audio">
-
-    <div class="actions">
-      <button class="btn" id="loadMusic">Cargar canción</button>
-      <label class="btn alt" for="musicFile">Elegir audio</label>
-      <input id="musicFile" class="hidden" type="file" accept="audio/*">
-    </div>
-
-    <audio id="audio" controls>
-      <source src="./cancion.mp3" type="audio/mpeg">
+    <audio id="audio" controls preload="metadata" style="width:100%">
+      <source src="./RALY%20BARRIONUEVO%20-%20Zamba%20y%20Acuarela%20(Con%20letra)(M4A_128K).m4a" type="audio/mp4">
       Tu navegador no puede reproducir este audio.
     </audio>
 
     <p class="note">Tocá reproducir para escuchar nuestra canción ♡</p>
   </div>
+    </section>
+
 </section>
     
 
