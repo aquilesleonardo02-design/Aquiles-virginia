@@ -121,7 +121,9 @@ Aquiles ♡</div>
         <p class="note">Elegí un audio o usá un enlace directo a un archivo de audio que tengas permiso para compartir.</p>
         <input id="musicUrl" type="url" placeholder="https://.../cancion.mp3" aria-label="Enlace directo a audio">
         <div class="actions"><button class="btn" id="loadMusic">Cargar canción</button><label class="btn alt" for="musicFile">Elegir audio</label><input id="musicFile" class="hidden" type="file" accept="audio/*"></div>
-        <audio id="audio" controls class="hidden"></audio>
+        <audio <audio id="audio" controls class="hidden">
+  <source src="./cancion.mp3" type="audio/mpeg">
+        </audio>
         <p class="note">La música no se inicia automáticamente. Para que se escuche desde el enlace, necesitás que el audio esté alojado en una dirección accesible.</p>
       </div>
     </section>
