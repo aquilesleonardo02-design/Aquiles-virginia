@@ -112,20 +112,33 @@ Aquiles ♡</div>
       <div id="letterEditor" class="hidden"><textarea id="letterInput" rows="9"></textarea><div class="actions"><button class="btn" id="saveLetter">Actualizar carta</button></div><p class="note">La edición es temporal. Para que quede fija en el enlace, editá el texto de la carta en index.html antes de publicarlo.</p></div>
       <p id="letterMsg" class="center hand hidden">La carta queda guardada en este momento bonito. ♡</p>
     </section>
+    
+<section class="section paper" id="musica">
+  <h2>Nuestra canción 🎶</h2>
+  <div class="music">
+    <div style="font-size:3rem">🎼</div>
+    <h3>Una canción que nos recuerde</h3>
+    <p class="note">Nuestra canción especial ❤️</p>
 
-    <section class="section paper" id="musica">
-      <h2>Nuestra canción 🎶</h2>
-      <div class="music">
-        <div style="font-size:3rem">🎼</div>
-        <h3>Una canción que nos recuerde</h3>
-        <p class="note">Elegí un audio o usá un enlace directo a un archivo de audio que tengas permiso para compartir.</p>
-        <input id="musicUrl" type="url" placeholder="https://.../cancion.mp3" aria-label="Enlace directo a audio">
-        <div class="actions"><button class="btn" id="loadMusic">Cargar canción</button><label class="btn alt" for="musicFile">Elegir audio</label><input id="musicFile" class="hidden" type="file" accept="audio/*"></div>
-        <audio <audio id="audio" controls class="hidden">
-  <source src="./cancion.mp3" type="audio/mpeg">
-        </audio>
-        <p class="note">La música no se inicia automáticamente. Para que se escuche desde el enlace, necesitás que el audio esté alojado en una dirección accesible.</p>
-      </div>
+    <input id="musicUrl" type="url" placeholder="https://.../cancion.mp3" aria-label="Enlace directo a audio">
+
+    <div class="actions">
+      <button class="btn" id="loadMusic">Cargar canción</button>
+      <label class="btn alt" for="musicFile">Elegir audio</label>
+      <input id="musicFile" class="hidden" type="file" accept="audio/*">
+    </div>
+
+    <audio id="audio" controls>
+      <source src="./cancion.mp3" type="audio/mpeg">
+      Tu navegador no puede reproducir este audio.
+    </audio>
+
+    <p class="note">Tocá reproducir para escuchar nuestra canción ♡</p>
+  </div>
+</section>
+    
+
+    
     </section>
 
     <section class="section paper" id="quiz">
