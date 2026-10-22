@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8e9e3">
+<title>Aquiles ♡ Virginia</title>
+<style>
+:root{--paper:#fff8ef;--pink:#e9a6ad;--rose:#b84e66;--ink:#49383a;--tape:#e9cba5;--lilac:#e8dff0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif;background:#f7e8e1;background-image:radial-gradient(#dcbab0 1px,transparent 1px);background-size:17px 17px}
+button,input,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.paper{background:var(--paper);border:1px solid #e8cfc2;box-shadow:0 8px 24px #805c5014;position:relative}
+.paper:before{content:"";position:absolute;top:-8px;left:38%;width:90px;height:19px;background:#e9cba5b8;transform:rotate(-3deg)}
+.wrap{width:min(780px,calc(100% - 22px));margin:auto;padding:16px 0 35px}
+.topbar{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;padding:10px 14px;background:#fff8efc9;border-radius:14px;margin-bottom:12px}
+.topbar b{letter-spacing:.08em}.tiny-heart{color:var(--rose);font-size:1.25rem}
+.cover{min-height:calc(100svh - 85px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px 20px;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,#fff8ef,#f5ded8)}
+.kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;color:#a56b72}
+h1,h2,h3,.hand{font-family:"Segoe Print","Bradley Hand",cursive;font-weight:500}
+.cover h1{font-size:clamp(2.5rem,9vw,4.7rem);line-height:1.12;margin:16px 0 8px;color:#a8445b}
+.cover p{max-width:330px;line-height:1.6}.envelope-button{border:0;background:none;margin:20px 0 8px;max-width:330px;width:100%;transition:transform .25s}.envelope-button:hover{transform:translateY(-5px) rotate(-1deg)}
+.envelope{height:185px;position:relative;background:#eaa4ac;border-radius:9px;box-shadow:0 8px 0 #d38b97;overflow:hidden;border:1px solid #cf8993}
+.envelope:before{content:"";position:absolute;inset:0;background:#f4bbc0;clip-path:polygon(0 0,50% 57%,100% 0);z-index:2}
+.envelope:after{content:"";position:absolute;inset:0;background:#df929d;clip-path:polygon(0 100%,0 0,50% 57%,100% 0,100% 100%);z-index:1}
+.seal{position:absolute;z-index:3;top:46%;left:50%;transform:translate(-50%,-50%);font-size:2.2rem;filter:drop-shadow(0 2px 0 #b86e7c)}
+.tap{font-size:.88rem;color:#8c6066}.sprinkles{font-size:1.7rem;letter-spacing:.5em;margin-top:20px}
+main#site{animation:appear .8s ease}@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.hero{padding:28px 18px;text-align:center;border-radius:8px;background:linear-gradient(#f9e8e1d9,#fff8ef),url('')}.hero h1{font-size:clamp(2.1rem,7vw,3.5rem);margin:8px;color:#a8445b}.hero p{font-family:Georgia,serif;font-style:italic}
+.section{margin-top:17px;padding:23px 19px;border-radius:5px}.section h2{text-align:center;color:#a8445b;font-size:1.7rem;margin:0 0 14px}
+.counter-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:18px 0 12px}.counter{padding:12px 3px;background:#fbe8e8;border:1px solid #edc8c8;text-align:center;border-radius:9px}.counter strong{display:block;font-size:clamp(1rem,4vw,1.65rem);color:#a8445b}.counter span{font-size:.68rem}
+.navgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}.navbtn{border:1px solid #e7c8c3;background:#f8e4e4;border-radius:13px;padding:13px 4px;color:#764d55}.navbtn span{display:block;font-size:1.5rem;margin-bottom:5px}.navbtn small{font-size:.73rem}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.polaroid{padding:9px 9px 13px;background:white;box-shadow:0 4px 10px #6d46451a;transform:rotate(-1deg)}.polaroid:nth-child(even){transform:rotate(1.4deg)}.polaroid img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#f5dfe0}.polaroid figcaption{text-align:center;font-family:"Segoe Print",cursive;margin-top:9px;font-size:.85rem}.upload{font-size:.75rem;max-width:100%;margin-top:8px}
+.letter{padding:22px 18px;background:repeating-linear-gradient(#fff8e9,#fff8e9 31px,#e9d7c9 32px);line-height:2;white-space:pre-wrap;font-family:"Segoe Print",cursive;border:1px solid #ead7c4}.btn{border:0;border-radius:999px;padding:12px 18px;background:#c65b73;color:white;box-shadow:0 3px 0 #9e4057;font-weight:bold}.btn.alt{background:#8b718e;box-shadow:0 3px 0 #67516a}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:14px}
+.music{text-align:center;background:#f1eaf5;padding:18px;border-radius:15px}.music input[type=url],textarea{width:100%;padding:11px;border:1px solid #dec8d8;border-radius:10px;background:#fffdf9;margin:7px 0}.music audio{width:100%;margin-top:14px}
+.quizbox{padding:17px;background:#fff5e8;border:1px dashed #d7b6a2;border-radius:13px;text-align:center}.answers{display:grid;gap:9px;margin-top:15px}.answers button{border:1px solid #edc5c8;border-radius:999px;background:#f8dfe2;padding:12px;color:#704a53}.answers button:focus,.answers button:hover{background:#e8cfe8}
+.final{text-align:center;background:#22253b;color:#fff1e8;border-radius:8px;padding:28px 20px;overflow:hidden}.final h2{font-size:1.8rem}.final .star{font-size:1.5rem;color:#f5d9a5;letter-spacing:.6em}.final p{line-height:1.7}
+.note{font-size:.82rem;color:#8e7375;line-height:1.5}.center{text-align:center}.footer{text-align:center;padding:24px 5px;color:#8f6a70;font-family:Georgia,serif}
+@media(max-width:520px){.wrap{width:calc(100% - 14px);padding-top:8px}.cover{min-height:calc(100svh - 70px);padding:24px 15px}.envelope{height:160px}.section{padding:19px 12px}.counter-grid{grid-template-columns:repeat(3,1fr)}.navgrid{grid-template-columns:repeat(4,1fr);gap:5px}.navbtn{padding:10px 2px}.navbtn span{font-size:1.25rem}.navbtn small{font-size:.64rem}.gallery{gap:9px}.polaroid{padding:6px 6px 10px}.polaroid figcaption{font-size:.75rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><span>🔒 aquiles-virginia</span><b>un regalo para vos</b><span class="tiny-heart">♡</span></div>
+
+  <section class="cover paper" id="cover">
+    <div class="kicker">una pequeña sorpresa</div>
+    <h1>Aquiles <span style="color:#d66f83">♡</span><br>Virginia</h1>
+    <p>Hay historias que no necesitan ser perfectas, solo necesitan ser nuestras.</p>
+    <button class="envelope-button" id="openEnvelope" aria-label="Abrir el sobre sorpresa">
+      <div class="envelope"><span class="seal">♥</span></div>
+    </button>
+    <div class="tap hand">Tocá el sobre para abrir tu regalo</div>
+    <div class="sprinkles">🌷 ✨ ♡ 🧸</div>
+  </section>
+
+  <main id="site" class="hidden">
+    <header class="hero paper section">
+      <div class="kicker">nuestro pequeño universo</div>
+      <h1>Aquiles <span style="color:#d66f83">♡</span> Virginia</h1>
+      <p>“Gracias por estar, por elegirme y por hacer más bonito lo cotidiano.”</p>
+      <div style="font-size:1.4rem">🌷 🧸 💌 ✨</div>
+    </header>
+
+    <section class="section paper center" id="historia">
+      <h2>Desde aquel día… ♡</h2>
+      <p>Y cada segundo suma una nueva página a nuestra historia.</p>
+      <div class="counter-grid">
+        <div class="counter"><strong id="years">0</strong><span>Años</span></div>
+        <div class="counter"><strong id="months">0</strong><span>Meses</span></div>
+        <div class="counter"><strong id="days">0</strong><span>Días</span></div>
+        <div class="counter"><strong id="hours">0</strong><span>Horas</span></div>
+        <div class="counter"><strong id="minutes">0</strong><span>Min</span></div>
+        <div class="counter"><strong id="seconds">0</strong><span>Seg</span></div>
+      </div>
+      <p class="note">Juntos desde el 23 de febrero de 2025</p>
+      <div class="navgrid">
+        <button class="navbtn" data-scroll="historia"><span>🗓️</span><small>Historia</small></button>
+        <button class="navbtn" data-scroll="fotos"><span>🖼️</span><small>Fotos</small></button>
+        <button class="navbtn" data-scroll="carta"><span>💌</span><small>Carta</small></button>
+        <button class="navbtn" data-scroll="musica"><span>🎵</span><small>Música</small></button>
+      </div>
+      <div class="actions"><button class="btn alt" data-scroll="quiz">Quiz de pareja 💗</button><button class="btn" data-scroll="final">Sorpresa final 🎁</button></div>
+    </section>
+
+    <section class="section paper" id="fotos">
+      <h2>Nuestra historia en fotos 📸</h2>
+      <p class="center">Pequeños recuerdos que guardaría mil veces.</p>
+      <div class="gallery">
+        <figure class="polaroid"><img id="photo1" src="https://placehold.co/600x600/f1d7d2/9e5260?text=Foto+1" alt="Primer recuerdo"><figcaption>Un recuerdo bonito ♡</figcaption><input class="upload" type="file" accept="image/*" data-target="photo1" aria-label="Elegir foto uno"></figure>
+        <figure class="polaroid"><img id="photo2" src="https://placehold.co/600x600/f4e6d8/9e5260?text=Foto+2" alt="Segundo recuerdo"><figcaption>Mi sonrisa favorita</figcaption><input class="upload" type="file" accept="image/*" data-target="photo2" aria-label="Elegir foto dos"></figure>
+        <figure class="polaroid"><img id="photo3" src="https://placehold.co/600x600/e8dff0/795d83?text=Foto+3" alt="Tercer recuerdo"><figcaption>Vos y yo ✨</figcaption><input class="upload" type="file" accept="image/*" data-target="photo3" aria-label="Elegir foto tres"></figure>
+        <figure class="polaroid"><img id="photo4" src="https://placehold.co/600x600/f6e7c8/9e5260?text=Foto+4" alt="Cuarto recuerdo"><figcaption>Un día para guardar</figcaption><input class="upload" type="file" accept="image/*" data-target="photo4" aria-label="Elegir foto cuatro"></figure>
+      </div>
+      <p class="note">Para que las fotos se vean también desde el enlace publicado, agregá los archivos de imagen al sitio y cambiá las imágenes de ejemplo en el HTML. El selector de arriba solo hace una vista previa en tu dispositivo.</p>
+    </section>
+
+    <section class="section paper" id="carta">
+      <h2>Una carta para vos 💌</h2>
+      <div id="letter" class="letter">Virginia:
+
+Desde que llegaste a mi vida, hay un montón de momentos que se volvieron más especiales. Me gusta compartir mis días con vos, reírnos por cualquier cosa y seguir construyendo recuerdos que sean solo nuestros.
+
+No hace falta que todo sea perfecto; me alcanza con que sigamos eligiéndonos y acompañándonos en cada etapa.
+
+Gracias por ser parte de mi historia y por dejarme ser parte de la tuya.
+
+Con mucho cariño,
+Aquiles ♡</div>
+      <div class="actions"><button class="btn" id="toggleLetter">Guardar esta cartita en el corazón 💗</button><button class="btn alt" id="editLetter">Personalizar carta ✍️</button></div>
+      <div id="letterEditor" class="hidden"><textarea id="letterInput" rows="9"></textarea><div class="actions"><button class="btn" id="saveLetter">Actualizar carta</button></div><p class="note">La edición es temporal. Para que quede fija en el enlace, editá el texto de la carta en index.html antes de publicarlo.</p></div>
+      <p id="letterMsg" class="center hand hidden">La carta queda guardada en este momento bonito. ♡</p>
+    </section>
+
+    <section class="section paper" id="musica">
+      <h2>Nuestra canción 🎶</h2>
+      <div class="music">
+        <div style="font-size:3rem">🎼</div>
+        <h3>Una canción que nos recuerde</h3>
+        <p class="note">Elegí un audio o usá un enlace directo a un archivo de audio que tengas permiso para compartir.</p>
+        <input id="musicUrl" type="url" placeholder="https://.../cancion.mp3" aria-label="Enlace directo a audio">
+        <div class="actions"><button class="btn" id="loadMusic">Cargar canción</button><label class="btn alt" for="musicFile">Elegir audio</label><input id="musicFile" class="hidden" type="file" accept="audio/*"></div>
+        <audio id="audio" controls class="hidden"></audio>
+        <p class="note">La música no se inicia automáticamente. Para que se escuche desde el enlace, necesitás que el audio esté alojado en una dirección accesible.</p>
+      </div>
+    </section>
+
+    <section class="section paper" id="quiz">
+      <h2>¿Cuánto nos conocemos? 💞</h2>
+      <div class="quizbox">
+        <div class="kicker" id="quizProgress">Pregunta 1 de 3</div>
+        <h3 id="question">¿Qué plan disfrutaríamos juntos?</h3>
+        <div class="answers" id="answers"></div>
+        <p id="quizResult" class="hand hidden"></p>
+        <div class="actions"><button class="btn alt hidden" id="restartQuiz">Jugar otra vez ↻</button></div>
+        <p class="note">Podés cambiar las preguntas y opciones editando la lista “questions” dentro de index.html.</p>
+      </div>
+    </section>
+
+    <section class="section final" id="final">
+      <div class="star">✦ ☾ ✦</div>
+      <h2>Un último mensajito…</h2>
+      <p>Gracias por existir, por ser vos y por compartir un pedacito de tu vida conmigo.</p>
+      <p class="hand">Hoy, mañana y siempre… te elijo. ♡</p>
+      <button class="btn" id="finalBtn">Abrir mi sorpresa 🎁</button>
+      <p id="finalMessage" class="hidden hand" style="font-size:1.3rem">Virginia, sos una parte muy bonita de mi historia. Te quiero. — Aquiles ♡</p>
+    </section>
+    <footer class="footer">Hecho con cariño por Aquiles, para Virginia ♡</footer>
+  </main>
+</div>
+<script>
+const anniversary = new Date(2025, 1, 23, 0, 0, 0);
+function updateCounter(){
+  const now=new Date();
+  let years=now.getFullYear()-anniversary.getFullYear();
+  let anniversaryThisYear=new Date(now.getFullYear(),anniversary.getMonth(),anniversary.getDate());
+  if(now<anniversaryThisYear) years--;
+  let lastAnniversary=new Date(anniversary.getFullYear()+years,anniversary.getMonth(),anniversary.getDate());
+  let months=(now.getFullYear()-lastAnniversary.getFullYear())*12+now.getMonth()-lastAnniversary.getMonth();
+  if(now.getDate()<lastAnniversary.getDate()) months--;
+  months=Math.max(0,months);
+  let monthStart=new Date(lastAnniversary.getFullYear(),lastAnniversary.getMonth()+months,lastAnniversary.getDate());
+  let diff=Math.max(0,now-monthStart);
+  document.getElementById('years').textContent=Math.max(0,years);
+  document.getElementById('months').textContent=months;
+  document.getElementById('days').textContent=Math.floor(diff/86400000);
+  document.getElementById('hours').textContent=Math.floor(diff%86400000/3600000);
+  document.getElementById('minutes').textContent=Math.floor(diff%3600000/60000);
+  document.getElementById('seconds').textContent=Math.floor(diff%60000/1000);
+}
+updateCounter();setInterval(updateCounter,1000);
+
+document.getElementById('openEnvelope').addEventListener('click',()=>{
+  document.getElementById('cover').classList.add('hidden');
+  const site=document.getElementById('site');site.classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>{
+  document.getElementById(b.dataset.scroll).scrollIntoView({behavior:'smooth',block:'start'});
+}));
+document.querySelectorAll('input[type=file][data-target]').forEach(input=>input.addEventListener('change',()=>{
+  const file=input.files&&input.files[0];if(file)document.getElementById(input.dataset.target).src=URL.createObjectURL(file);
+}));
+const letter=document.getElementById('letter'),editor=document.getElementById('letterEditor'),letterInput=document.getElementById('letterInput');
+document.getElementById('editLetter').addEventListener('click',()=>{editor.classList.toggle('hidden');letterInput.value=letter.textContent;});
+document.getElementById('saveLetter').addEventListener('click',()=>{letter.textContent=letterInput.value;editor.classList.add('hidden');});
+document.getElementById('toggleLetter').addEventListener('click',()=>document.getElementById('letterMsg').classList.toggle('hidden'));
+const audio=document.getElementById('audio');
+document.getElementById('loadMusic').addEventListener('click',()=>{
+ const url=document.getElementById('musicUrl').value.trim();if(!url){alert('Pegá un enlace directo al audio primero.');return;}
+ audio.src=url;audio.classList.remove('hidden');audio.load();
+});
+document.getElementById('musicFile').addEventListener('change',e=>{
+ const f=e.target.files&&e.target.files[0];if(f){audio.src=URL.createObjectURL(f);audio.classList.remove('hidden');audio.load();}
+});
+const questions=[
+ {q:'¿Qué plan disfrutaríamos juntos?',a:['Una salida o aventura','Compartir algo rico y charlar','Cualquier plan si estamos juntos'],correct:2},
+ {q:'¿Qué hace especial nuestra historia?',a:['Los recuerdos que creamos','Que siempre sea perfecta','Tener las mismas ideas en todo'],correct:0},
+ {q:'¿Qué vale más en una relación?',a:['Escucharnos y acompañarnos','No equivocarnos nunca','Estar de acuerdo siempre'],correct:0}
+];
+let qi=0,score=0;
+function renderQuestion(){
+ const q=questions[qi];document.getElementById('quizProgress').textContent=`Pregunta ${qi+1} de ${questions.length}`;
+ document.getElementById('question').textContent=q.q;const box=document.getElementById('answers');box.innerHTML='';
+ q.a.forEach((answer,i)=>{const b=document.createElement('button');b.textContent=answer;b.addEventListener('click',()=>{
+   [...box.querySelectorAll('button')].forEach(x=>x.disabled=true);
+   if(i===q.correct)score++;
+   b.textContent=answer+(i===q.correct?'  ♡':'');
+   setTimeout(()=>{qi++;if(qi<questions.length)renderQuestion();else{
+     document.getElementById('question').textContent='¡Gracias por jugar! 💗';
+     document.getElementById('quizProgress').textContent='Fin del quiz';
+     box.innerHTML='';const r=document.getElementById('quizResult');r.textContent='Cada pareja tiene su propia historia, y la nuestra es especial. ♡';r.classList.remove('hidden');
+     document.getElementById('restartQuiz').classList.remove('hidden');
+   }},450);
+ });box.appendChild(b);});
+}
+renderQuestion();
+document.getElementById('restartQuiz').addEventListener('click',()=>{qi=0;score=0;document.getElementById('quizResult').classList.add('hidden');document.getElementById('restartQuiz').classList.add('hidden');renderQuestion();});
+document.getElementById('finalBtn').addEventListener('click',()=>document.getElementById('finalMessage').classList.toggle('hidden'));
+</script>
+</body>
+</html>
