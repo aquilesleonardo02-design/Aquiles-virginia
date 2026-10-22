@@ -218,10 +218,11 @@ document.getElementById('restartQuiz').addEventListener('click',()=>{qi=0;score=
 document.getElementById('finalBtn').addEventListener('click',()=>document.getElementById('finalMessage').classList.toggle('hidden'));
 </script>
 </body>
+
 <script>
 (() => {
   const KEY = "aquilesVirginiaPersonalizacion";
-  const titulo = document.querySelector("h1");
+  const titulo = document.querySelector("#site .hero h1");
   if (!titulo) return;
 
   const leer = () => {
@@ -232,224 +233,152 @@ document.getElementById('finalBtn').addEventListener('click',()=>document.getEle
     }
   };
 
-  let datos = leer();
   let toques = [];
-  let editorAbierto = false;
-
-  const estilo = document.createElement("style");
-  estilo.textContent = `
-    #editor-secreto {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: #fff0f5;
-      color: #713e50;
-      overflow: auto;
-      padding: 22px;
-      font-family: Arial, sans-serif;
-    }
-    #editor-secreto[hidden] { display: none; }
-    #editor-secreto input,
-    #editor-secreto textarea {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin: 7px 0 16px;
-      border: 1px solid #e6a5bb;
-      border-radius: 10px;
-      box-sizing: border-box;
-      background: white;
-      color: #713e50;
-    }
-    #editor-secreto button {
-      padding: 12px 16px;
-      margin: 5px;
-      border: 0;
-      border-radius: 20px;
-      background: #d94f78;
-      color: white;
-      cursor: pointer;
-    }
-    #editor-secreto label {
-      font-weight: bold;
-    }
-  `;
-  document.head.appendChild(estilo);
+  let datos = leer();
 
   const panel = document.createElement("div");
   panel.id = "editor-secreto";
   panel.hidden = true;
+  panel.style.cssText =
+    "position:fixed;inset:0;z-index:999999;background:#fff0f5;" +
+    "color:#713e50;overflow:auto;padding:20px;font-family:Arial";
+
   panel.innerHTML = `
-    <h2>💗 Personalizar nuestra página</h2>
-    <p>Los cambios se guardan en este navegador.</p>
-
-    <label>Texto del título</label>
-    <input id="ed-titulo" maxlength="150">
-
-    <label>Fecha en que comenzó la relación</label>
-    <input id="ed-fecha" type="date">
-
-    <label>Carta romántica</label>
-    <textarea id="ed-carta" rows="7"></textarea>
-
-    <h3>📸 Fotos</h3>
-    <p>Pegá el enlace directo de cada foto. Dejá vacío para conservar la foto actual.</p>
-    <div id="ed-fotos"></div>
-
-    <h3>🎵 Música</h3>
-    <label>Enlace directo a un archivo MP3</label>
-    <input id="ed-musica" type="url"
-      placeholder="https://.../cancion.mp3">
-
-    <button id="ed-guardar">💾 Guardar cambios</button>
-    <button id="ed-cerrar">🔒 Cerrar edición</button>
-    <p id="ed-mensaje" aria-live="polite"></p>
+    <h2>💗 Editor secreto</h2>
+    <label>Título</label>
+    <input id="se-titulo">
+    <label>Fecha de inicio</label>
+    <input id="se-fecha" type="date">
+    <label>Carta</label>
+    <textarea id="se-carta" rows="8"></textarea>
+    <h3>Fotos</h3>
+    <div id="se-fotos"></div>
+    <label>Enlace directo de música MP3</label>
+    <input id="se-musica" type="url" placeholder="https://.../cancion.mp3">
+    <p>
+      <button id="se-guardar">Guardar cambios</button>
+      <button id="se-cerrar">Cerrar edición</button>
+    </p>
+    <p id="se-msg"></p>
   `;
+
   document.body.appendChild(panel);
 
-  const campo = id => panel.querySelector("#" + id);
+  const $ = id => panel.querySelector("#" + id);
 
-  function buscarCarta() {
-    let el = document.querySelector(
-      "#carta, #letter, .carta-texto, [data-letter]"
-    );
-    if (!el) {
-      el = document.createElement("p");
-      el.id = "carta";
-      el.style.whiteSpace = "pre-line";
-      const seccion = document.createElement("section");
-      seccion.innerHTML = "<h2>💌 Una carta para vos</h2>";
-      seccion.appendChild(el);
-      (document.querySelector("main") || document.body)
-        .appendChild(seccion);
+  const css = document.createElement("style");
+  css.textContent = `
+    #editor-secreto[hidden]{display:none}
+    #editor-secreto input,#editor-secreto textarea{
+      display:block;width:100%;box-sizing:border-box;
+      padding:12px;margin:8px 0 16px;border:1px solid #d99;
+      border-radius:10px;background:white;color:#713e50
     }
-    return el;
-  }
+    #editor-secreto button{
+      padding:12px;border:0;border-radius:20px;
+      background:#d94f78;color:white;margin:4px
+    }
+  `;
+  document.head.appendChild(css);
 
-  function actualizarVista() {
+  function aplicar() {
     datos = leer();
 
-    if (datos.titulo) titulo.textContent = datos.titulo;
-
-    const carta = buscarCarta();
-    if (datos.carta !== undefined) {
-      carta.textContent = datos.carta;
-      carta.hidden = false;
+    if (datos.titulo) {
+      titulo.innerHTML = "";
+      titulo.append(document.createTextNode(datos.titulo));
     }
 
-    if (datos.fecha) {
-      const contador = document.querySelector("#contador, #counter");
-      if (contador) {
-        const [y, m, d] = datos.fecha.split("-").map(Number);
-        const inicio = new Date(y, m - 1, d);
-        const ahora = new Date();
-        const dias = Math.floor(
-          (new Date(ahora.getFullYear(), ahora.getMonth(),
-            ahora.getDate()) - inicio) / 86400000
-        );
-        contador.textContent = dias >= 0
-          ? dias + " días juntos ❤️"
-          : "Nuestra historia está por comenzar ❤️";
-      }
+    if (datos.carta !== undefined) {
+      document.querySelector("#letter").textContent = datos.carta;
     }
 
     if (datos.fotos) {
-      const imagenes = document.querySelectorAll("img");
       datos.fotos.forEach((src, i) => {
-        if (src && imagenes[i]) imagenes[i].src = src;
+        const img = document.querySelector("#photo" + (i + 1));
+        if (img && src) img.src = src;
       });
     }
 
+    if (datos.fecha) {
+      const [y, m, d] = datos.fecha.split("-").map(Number);
+      anniversary.setFullYear(y, m - 1, d);
+      updateCounter();
+    }
+
     if (datos.musica) {
-      let audio = document.querySelector("audio");
-      if (!audio) {
-        audio = document.createElement("audio");
-        audio.controls = true;
-        audio.loop = true;
-        audio.style.display = "block";
-        audio.style.margin = "20px auto";
-        (document.querySelector("main") || document.body)
-          .appendChild(audio);
-      }
-      if (audio.dataset.editorSrc !== datos.musica) {
-        audio.src = datos.musica;
-        audio.dataset.editorSrc = datos.musica;
-      }
+      const audio = document.querySelector("#audio");
+      audio.src = datos.musica;
+      audio.classList.remove("hidden");
     }
   }
 
-  function abrirEditor() {
-    if (editorAbierto) return;
-    editorAbierto = true;
-    datos = leer();
+  function abrir() {
+    $("se-titulo").value = datos.titulo || "Aquiles ♡ Virginia";
+    $("se-fecha").value = datos.fecha || "2025-02-23";
+    $("se-carta").value =
+      datos.carta ?? document.querySelector("#letter").textContent;
+    $("se-musica").value = datos.musica || "";
 
-    campo("ed-titulo").value = datos.titulo || titulo.textContent;
-    campo("ed-fecha").value = datos.fecha || "2025-02-23";
-    campo("ed-carta").value =
-      datos.carta !== undefined ? datos.carta : buscarCarta().textContent;
+    const fotos = $("se-fotos");
+    fotos.innerHTML = "";
 
-    const imagenes = [...document.querySelectorAll("img")];
-    const fotos = datos.fotos || [];
-    campo("ed-fotos").replaceChildren();
-
-    imagenes.forEach((img, i) => {
+    for (let i = 1; i <= 4; i++) {
       const label = document.createElement("label");
-      label.textContent = "Foto " + (i + 1);
+      label.textContent = "Enlace de foto " + i;
+
       const input = document.createElement("input");
       input.type = "url";
-      input.placeholder = "Enlace directo de la foto";
-      input.value = fotos[i] || "";
-      input.dataset.indice = i;
-      campo("ed-fotos").append(label, input);
-    });
+      input.id = "se-foto" + i;
+      input.placeholder = "https://.../foto.jpg";
+      input.value = datos.fotos?.[i - 1] ||
+        document.querySelector("#photo" + i).src;
 
-    campo("ed-musica").value = datos.musica || "";
+      fotos.append(label, input);
+    }
+
     panel.hidden = false;
   }
 
   titulo.style.cursor = "pointer";
   titulo.addEventListener("click", () => {
     const ahora = Date.now();
-    toques = toques.filter(t => ahora - t < 1800);
+    toques = toques.filter(t => ahora - t < 2000);
     toques.push(ahora);
 
     if (toques.length >= 5) {
       toques = [];
-      abrirEditor();
+      datos = leer();
+      abrir();
     }
   });
 
-  campo("ed-guardar").addEventListener("click", () => {
-    const fotos = [...campo("ed-fotos").querySelectorAll("input")]
-      .map(input => input.value.trim());
-
+  $("se-guardar").addEventListener("click", () => {
     const nueva = {
-      titulo: campo("ed-titulo").value.trim(),
-      fecha: campo("ed-fecha").value,
-      carta: campo("ed-carta").value,
-      fotos,
-      musica: campo("ed-musica").value.trim()
+      titulo: $("se-titulo").value,
+      fecha: $("se-fecha").value,
+      carta: $("se-carta").value,
+      fotos: [1, 2, 3, 4].map(i => $("se-foto" + i).value.trim()),
+      musica: $("se-musica").value.trim()
     };
 
     try {
       localStorage.setItem(KEY, JSON.stringify(nueva));
       datos = nueva;
-      actualizarVista();
-      campo("ed-mensaje").textContent = "¡Cambios guardados! ❤️";
+      aplicar();
+      $("se-msg").textContent = "Cambios guardados ❤️";
     } catch {
-      campo("ed-mensaje").textContent =
-        "No se pudieron guardar los cambios en este navegador.";
+      $("se-msg").textContent = "No se pudieron guardar los cambios.";
     }
   });
 
-  campo("ed-cerrar").addEventListener("click", () => {
+  $("se-cerrar").addEventListener("click", () => {
     panel.hidden = true;
-    editorAbierto = false;
   });
 
-  actualizarVista();
+  aplicar();
 })();
 </script>
 </body>
 </html>
-</html>
+
